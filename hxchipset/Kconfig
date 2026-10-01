@@ -1,0 +1,109 @@
+#
+# Himax Touchscreen driver configuration
+#
+
+config TOUCHSCREEN_HIMAX_COMMON
+		tristate "HIMAX chipset i2c touchscreen"
+		depends on TOUCHSCREEN_HIMAX_CHIPSET
+		depends on SPI
+		help
+		This enables support for HIMAX CHIPSET touchscreens.
+		Himax common is library for functions which IC use
+		Such as register read write function for common usage
+		Could be include when need common function.
+
+config TOUCHSCREEN_HIMAX_IC_HX8530
+        tristate "HIMAX chipset HX8530 function"
+		depends on TOUCHSCREEN_HIMAX_CHIPSET
+		help
+		This enables support for HIMAX CHIPSET of HX8530.
+
+config TOUCHSCREEN_HIMAX_IC_HX83181
+        tristate "HIMAX chipset HX83181 function"
+		help
+		This enables support for HIMAX CHIPSET of HX83181.
+		The purpose of this is to implement incell IC functions
+		which might be different like FW update or sense on off
+		and other IC flow
+
+config TOUCHSCREEN_HIMAX_IC_HX83180
+        tristate "HIMAX chipset HX83180 function"
+		help
+		This enables support for HIMAX CHIPSET of HX83180.
+		The purpose of this is to implement incell IC functions
+		which might be different like FW update or sense on off
+		and other IC flow
+
+config TOUCHSCREEN_HIMAX_IC_HX83195
+		tristate "HIMAX chipset HX83195 function"
+		help
+		This enables support for HIMAX CHIPSET of HX83195.
+		The purpose of this is to implement incell IC functions
+		which might be different like FW update or sense on off
+		and other IC flow
+
+config TOUCHSCREEN_HIMAX_IC_HX83194
+		tristate "HIMAX chipset HX83194 function"
+		help
+		This enables support for HIMAX CHIPSET of HX83194.
+		The purpose of this is to implement incell IC functions
+		which might be different like FW update or sense on off
+		and other IC flow
+
+config TOUCHSCREEN_HIMAX_IC_HX83193
+		tristate "HIMAX chipset HX83193 function"
+		help
+		This enables support for HIMAX CHIPSET of HX83193.
+		The purpose of this is to implement incell IC functions
+		which might be different like FW update or sense on off
+		and other IC flow
+
+config TOUCHSCREEN_HIMAX_IC_HX83192
+        tristate "HIMAX chipset HX83192 function"
+		help
+		This enables support for HIMAX CHIPSET of HX83192.
+		The purpose of this is to implement incell IC functions
+		which might be different like FW update or sense on off
+		and other IC flow
+
+config TOUCHSCREEN_HIMAX_DEBUG
+		bool "HIMAX debug function"
+		help
+		This enables support for HIMAX debug function.
+		The purpose of this is to implement IC debug functions
+		which enable node for user to use for debug usage
+		It's a debug function that could be open when need
+		using debug node to see debug message or manufactory
+		functions test
+
+config TOUCHSCREEN_HIMAX_SELF_TEST
+        bool "HIMAX self_test function"
+		help
+		This enables support for HIMAX self test function.
+		The purpose of this is to implement IC to run self test
+		functions, there are several functions for IC self check
+		make a open/short check
+
+config TOUCHSCREEN_HIMAX_EMBEDDED_FIRMWARE
+	bool "HIMAX embedded firmware function"
+		help
+		This enables built-in FW inside kernel as binary array
+		The purpose of this is to build in FW with binary header
+		array, let driver has it's own default FW code instead of
+		using flash FW
+
+config HIMAX_SUPPORT_KERNEL_419
+	bool "HIMAX driver support kernel 419"
+		help
+		This enables HIMAX driver usage in kernel 419 function
+		The purpose of this is to build in driver with kernel 419,
+		let driver recognize kernel 419 instead of
+		other kernel version
+
+config TOUCHSCREEN_HIMAX_OFR_SPI
+    bool "Himax On-the-Fly Reprogramming (OFR) over SPI"
+    depends on TOUCHSCREEN_HIMAX_COMMON && SPI
+    default y
+    help
+      Enable OFR on-the-fly reprogramming for Himax touch controllers over SPI.
+      This feature allows runtime firmware update via dedicated SPI routines.
